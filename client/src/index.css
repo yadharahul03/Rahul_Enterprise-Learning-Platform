@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Core surfaces — deep space navy, layered for depth under glass panels */
+  --ink: #0A0E27;
+  --ink-2: #0E1230;
+  --ridge: rgba(255, 255, 255, 0.055);
+  --ridge-light: rgba(255, 255, 255, 0.1);
+
+  /* Brand gradient — indigo → violet → cyan */
+  --orange: #7C6CF6;
+  --orange-dim: #5C4CDB;
+  --sage: #22D3EE;
+  --violet: #C084FC;
+
+  --chalk: #F2F3FC;
+  --chalk-dim: #9AA1C4;
+  --contour: rgba(255, 255, 255, 0.12);
+
+  --gradient-primary: linear-gradient(135deg, #7C6CF6 0%, #A78BFA 50%, #22D3EE 100%);
+  --gradient-text: linear-gradient(135deg, #A78BFA 0%, #7C6CF6 45%, #22D3EE 100%);
+  --glass-blur: blur(20px) saturate(140%);
+  --shadow-card: 0 8px 30px rgba(6, 8, 30, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-glow: 0 0 40px rgba(124, 108, 246, 0.25);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+
+  --font-display: 'Sora', 'Inter', sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Light theme — swaps surfaces/text; brand gradient colors stay the same
+   so accents, buttons, and charts still feel like the same product. */
+:root[data-theme='light'] {
+  --ink: #F4F5FB;
+  --ink-2: #FFFFFF;
+  --ridge: rgba(10, 14, 39, 0.045);
+  --ridge-light: rgba(10, 14, 39, 0.08);
+
+  --chalk: #12162E;
+  --chalk-dim: #5B6285;
+  --contour: rgba(10, 14, 39, 0.12);
+
+  --shadow-card: 0 8px 24px rgba(20, 20, 60, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --shadow-glow: 0 0 40px rgba(124, 108, 246, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color-scheme: dark;
+  background:
+    radial-gradient(ellipse 900px 600px at 12% -10%, rgba(124, 108, 246, 0.22), transparent 60%),
+    radial-gradient(ellipse 800px 700px at 88% 10%, rgba(34, 211, 238, 0.14), transparent 55%),
+    radial-gradient(ellipse 900px 900px at 50% 100%, rgba(192, 132, 252, 0.10), transparent 60%),
+    var(--ink);
+  background-attachment: fixed;
+  color: var(--chalk);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+:root[data-theme='light'] body {
+  color-scheme: light;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(124, 108, 246, 0.8);
+}
+
+.section {
+  padding: 6.5rem 6vw;
+  border-top: 1px solid var(--contour);
+  position: relative;
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 3.5rem;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-top: 0.75rem;
+}
+
+.section-head h2 em {
+  font-style: normal;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-head p {
+  margin-top: 1rem;
+  color: var(--chalk-dim);
+  font-size: 1.05rem;
+  max-width: 46ch;
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 4.5rem 6vw;
+  }
+}
+
+/* Shared glass + gradient primitives, reused across sections and app pages */
+.glass-panel {
+  background: var(--ridge);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--contour);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.grad-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 108, 246, 0.35);
+  border-radius: 10px;
+}

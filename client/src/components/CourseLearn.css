@@ -1,0 +1,161 @@
+/* CourseLearn.css — uses the same --st-* tokens defined in Dashboard.css */
+
+.cl-wrap {
+  display: flex;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+  gap: 1.5rem;
+  color: var(--st-cream);
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+.cl-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--st-forest-card);
+  border: 1px solid var(--st-border);
+  border-radius: 18px;
+  padding: 18px;
+  max-height: 80vh;
+  overflow-y: auto;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 8px 30px rgba(6, 8, 30, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.cl-sidebar-title {
+  font-family: var(--font-display, 'Sora', sans-serif);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  margin: 0 0 14px;
+}
+
+.cl-lesson-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--st-text-muted);
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cl-lesson-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--st-cream);
+}
+
+.cl-lesson-btn.active {
+  background: linear-gradient(135deg, rgba(124, 108, 246, 0.22), rgba(34, 211, 238, 0.12));
+  color: var(--st-cream);
+}
+
+.cl-lesson-check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--st-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--st-orange-light);
+}
+
+.cl-lesson-btn.active .cl-lesson-check {
+  background: linear-gradient(135deg, #7C6CF6, #22D3EE);
+  color: #fff;
+  border-color: transparent;
+}
+
+.cl-lesson-btn-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-main {
+  flex: 1;
+  background: var(--st-forest-card);
+  border: 1px solid var(--st-border);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 8px 30px rgba(6, 8, 30, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.cl-lesson-heading {
+  font-family: var(--font-display, 'Sora', sans-serif);
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+}
+
+.cl-video {
+  width: 100%;
+  border-radius: 12px;
+  background: black;
+}
+
+.cl-reading-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--st-text-muted);
+}
+
+.cl-question {
+  margin-bottom: 20px;
+}
+
+.cl-question-text {
+  font-size: 14px;
+  color: var(--st-cream);
+  margin-bottom: 8px;
+}
+
+.cl-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--st-text-muted);
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.cl-quiz-result {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cl-quiz-result.pass {
+  color: var(--st-sage);
+}
+
+.cl-quiz-result.fail {
+  color: #F87171;
+}
+
+@media (max-width: 700px) {
+  .cl-wrap {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  .cl-sidebar {
+    width: auto;
+    max-height: 240px;
+  }
+}
